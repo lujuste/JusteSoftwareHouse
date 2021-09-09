@@ -1,11 +1,14 @@
 import type { NextPage } from 'next'
-import { Header } from '../components/Header'
+import { CardsProcess } from '../components/CardsProcess'
+import { HomeScreen } from '../components/HomeScreen.tsx'
+import TechArea from '../components/TechArea'
 
 const Home: NextPage = () => {
   return (
     <>
-      <Header />
-      <h1>Home</h1>
+      <HomeScreen />
+      <CardsProcess />
+      <TechArea />
     </>
   )
 }

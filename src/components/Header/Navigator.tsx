@@ -1,7 +1,8 @@
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, Flex, HStack, LinkProps as ChakraLinkProps, Link as ChakraLink, useColorModeValue } from '@chakra-ui/react';
-import { ActiveLink } from './ActiveLink';
-import { useRouter } from 'next/router'
+import { Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Flex, LinkProps as ChakraLinkProps, useBreakpointValue } from '@chakra-ui/react';
 import React from 'react'
+import { NavigationItem } from './NavigationItems';
+
+
 
 interface NavLinkProps extends ChakraLinkProps {
     children?: string | React.ReactNode
@@ -14,59 +15,19 @@ interface NavLinkProps extends ChakraLinkProps {
 
 export function Navigator({ to, activeProps, children, _hover, ...props }: NavLinkProps) {
 
-    const router = useRouter()
 
     return (
         <Flex
             as="label"
             flex="1"
             py="4"
-            px="8"
-            ml="10"
+            px={["10", "20"]}
+            mx="auto"
             maxWidth={1200}
-            alignSelf="center"
-            position="relative"
+            justify="center"
 
         >
-
-            <Breadcrumb separator="" spacing="70px">
-
-                <BreadcrumbItem>
-                    <ActiveLink activeClassName="active" href="/" passHref>
-                        <BreadcrumbLink
-                            _active={{
-                                bgColor:
-                                    "red"
-                            }}
-                            opacity="0.5">Home</BreadcrumbLink>
-                    </ActiveLink>
-                </BreadcrumbItem>
-
-
-                <BreadcrumbItem >
-                    <ActiveLink activeClassName="active" href="/posts" passHref>
-                        <BreadcrumbLink opacity="0.5" _active={{ bgColor: "red" }} >Conteúdo</BreadcrumbLink>
-                    </ActiveLink>
-                </BreadcrumbItem>
-
-                <BreadcrumbItem >
-                    <ActiveLink activeClassName="active" href="/3" passHref>
-                        <BreadcrumbLink opacity="0.6" >Mineração</BreadcrumbLink>
-                    </ActiveLink>
-                </BreadcrumbItem>
-
-                <BreadcrumbItem>
-                    <ActiveLink activeClassName="active" href="/4" passHref>
-                        <BreadcrumbLink opacity="0.6" >Blockchain</BreadcrumbLink>
-                    </ActiveLink>
-                </BreadcrumbItem>
-
-                <BreadcrumbItem >
-                    <ActiveLink activeClassName="active" href="/5" passHref>
-                        <BreadcrumbLink opacity="0.6" href="#">Contato</BreadcrumbLink>
-                    </ActiveLink>
-                </BreadcrumbItem>
-            </Breadcrumb>
+            <NavigationItem />
 
         </Flex>
     )

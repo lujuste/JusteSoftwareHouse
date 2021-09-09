@@ -1,14 +1,12 @@
-import { extendTheme } from '@chakra-ui/react';
-
+import { extendTheme, ThemeConfig, useColorMode } from '@chakra-ui/react';
 
 const config = {
     initialColorMode: "dark",
     useSystemColorMode: false,
 }
 
-
-
 export const theme = extendTheme({
+
     colors: {
         gray: {
             "900": "#111113",
@@ -17,7 +15,6 @@ export const theme = extendTheme({
             "100": "#d7d7d7",
             "50": "#f2f2f3"
         },
-
         green: {
             "300": "#04D361"
         },
@@ -26,18 +23,17 @@ export const theme = extendTheme({
             "300": "#8257E5"
         }
     },
-
     fonts: {
         heading: 'Roboto, sans-serif',
         body: 'Roboto, sans-serif',
     },
 
     styles: {
-        global: {
+        global: (theme) => ({
             body: {
-                bg: 'gray.900',
+                bg: theme.colorMode === 'dark' ? 'gray.800' : 'gray.50',
                 color: 'gray.50',
             }
-        }
+        })
     }
 })

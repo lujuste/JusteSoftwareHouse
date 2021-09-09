@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
 
-const Posts: NextPage = () => {
+const Minner: NextPage = () => {
     return (
         <>
-            <h1>CONTEUDOS</h1>
+            <h1>Minner</h1>
         </>
     )
 }
 
-export default Posts
+export default Minner

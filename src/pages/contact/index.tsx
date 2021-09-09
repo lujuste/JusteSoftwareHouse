@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
 
-const Posts: NextPage = () => {
+const Contact: NextPage = () => {
     return (
         <>
-            <h1>CONTEUDOS</h1>
+            <h1>Contact</h1>
         </>
     )
 }
 
-export default Posts
+export default Contact

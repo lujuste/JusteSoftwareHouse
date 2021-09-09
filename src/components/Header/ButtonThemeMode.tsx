@@ -1,10 +1,32 @@
-import { MoonIcon } from '@chakra-ui/icons'
-import { HStack, Icon } from '@chakra-ui/react'
 
-export function ButtonThemeMode() {
+import { Button, HStack, Icon, useBreakpoint, useBreakpointValue, useColorMode } from '@chakra-ui/react'
+import { useState } from 'react'
+import { MoonItem } from './MoonItem'
+
+
+export function Example() {
+    const { colorMode, toggleColorMode } = useColorMode()
+
     return (
-        <HStack ml="45">
-            <Icon w={6} h={6} as={MoonIcon} />
-        </HStack>
+        <header>
+            <Button onClick={toggleColorMode}>
+                Toggle {colorMode === "light" ? "Dark" : "Light"}
+            </Button>
+        </header>
     )
 }
+
+export function ButtonThemeMode() {
+
+    const isVersion = useBreakpointValue({
+        base: false,
+        lg: false,
+        xl: true,
+    })
+
+    return (
+        <MoonItem />
+    )
+
+}
+
