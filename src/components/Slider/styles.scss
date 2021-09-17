@@ -1,0 +1,15 @@
+.swiper-button-prev:after, .swiper-button-next:after {
+    color: #04D361
+}
+
+
+.swiper-pagination-bullet {
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    opacity: 1
+}
+
+.swiper-pagination-bullet-active {
+    background: #04D361
+}

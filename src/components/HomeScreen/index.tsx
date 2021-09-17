@@ -1,4 +1,4 @@
-import { Flex, Image, VStack, HStack, Box, Text, Stack, Button, useColorMode } from '@chakra-ui/react'
+import { Flex, Image, HStack, Text, Stack, Button, useColorMode, Heading } from '@chakra-ui/react'
 import AstronautImg from '../../../public/images/AstronautHome.svg'
 import { ButtonHome } from './ButtonHome'
 import { ArrowDownIcon } from "@chakra-ui/icons"
@@ -20,6 +20,7 @@ export function HomeScreen() {
     const baseColorMode = colorMode === 'dark' ? "green.300" : "purple.300"
 
     return (
+        <>
         <Flex
             h={["90%", "90%", "90vh"]}
             maxWidth={1480}
@@ -62,7 +63,7 @@ export function HomeScreen() {
                     coisas
                     na
                     internet <br></br> com  &nbsp; 
-                    <Typical loop={Infinity} wrapper="b" steps={['Typescript', 8000, 'Javascript', 8000, 'React js', 8000, 'Next js', 8000, 'React-Native', 8000, 'Node js', 8000]} />
+                    <Typical loop={Infinity} wrapper="b" steps={['Typescript', 3000, 'Javascript', 3000, 'React js', 3000, 'Next js', 3000, 'React-Native', 3000, 'Node js', 3000, 'Typescript', 3000, 'Javascript', 3000, 'React js', 3000, 'Next js', 3000]} />
                 </Text>
 
 
@@ -81,7 +82,6 @@ export function HomeScreen() {
                     <HStack spacing={["6", "4", "12", "12", "12",]} mt="16">
                         <ButtonHome />
                         <Button
-                        
                             fontSize="1.2rem"
                             fontWeight="normal"
                             fontFamily="Roboto"
@@ -101,5 +101,8 @@ export function HomeScreen() {
 
             <Image mb={[0, 0, 6, 0]} mt={[10, 10, 0]}  mr={[2, 16]} ml={["0", "10"]} h={["200", "250", "250", "480", "600"]} src={AstronautImg} alt="Logo astronauta da Juste Software House" />
         </Flex >
+
+        
+        </>
     )
 }

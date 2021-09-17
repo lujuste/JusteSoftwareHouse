@@ -7,9 +7,7 @@ interface NavMenuProviderProps {
 }
 
 type NavMenuDrawerContextData = UseDisclosureReturn
-
 const NavMenuContext = createContext({} as NavMenuDrawerContextData)
-
 export function NavMenuProvider({ children }: NavMenuProviderProps) {
     const disclosure = useDisclosure()
     const router = useRouter()

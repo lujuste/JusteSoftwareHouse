@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { CardsProcess } from '../components/CardsProcess'
-import { HomeScreen } from '../components/HomeScreen.tsx'
+import CounterArea from '../components/CounterArea'
+import { HomeScreen } from '../components/HomeScreen'
 import TechArea from '../components/TechArea'
 
 const Home: NextPage = () => {
@@ -9,6 +10,7 @@ const Home: NextPage = () => {
       <HomeScreen />
       <CardsProcess />
       <TechArea />
+      <CounterArea />
     </>
   )
 }

@@ -19,7 +19,8 @@ export function CardsProcess() {
                     maxW="1480px"
                     flexWrap="wrap"
                     overflowX="hidden"
-                    gap={[1, 6]}  >
+                    gap={[1, 6]}
+                >
 
                     <GridItem cursor="pointer">
                         <CardItem icon="discover" title="Discover" description="‎Moldamos marcas através da exploração, aplicando pesquisas aprofundadas para desafiar suposições a cada momento." />

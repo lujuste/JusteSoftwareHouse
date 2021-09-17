@@ -7,6 +7,12 @@ import { useRouter } from 'next/router'
 import NextProgress from 'nextjs-progressbar'
 import { Provider as NextAuthProvider } from 'next-auth/client'
 
+import 'swiper/css';
+import '../components/Slider/styles.scss'
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 import '../styles/global.scss'
 
 function MyApp({ Component, pageProps }: AppProps) {
