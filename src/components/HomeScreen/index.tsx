@@ -6,6 +6,7 @@ import SuperStrong from '../SuperStrong'
 import Reveal from 'react-reveal/Reveal'
 
 import { createBreakpoints } from "@chakra-ui/theme-tools"
+import { lazy } from 'toasted-notes/node_modules/@types/react'
 
 const breakpoints = createBreakpoints({
     sm: "30em",
@@ -101,14 +102,14 @@ export function HomeScreen() {
                             _hover={{ bg: "gray.900" }}
                             p="7"
                             onClick={scrollDown}
-                        > Saiba mais <ArrowDownIcon marginLeft="3"/>
+                        > Saiba mais2 <ArrowDownIcon marginLeft="3"/>
                         </Button>
                     </HStack>
                 </Flex>
               
             </Stack>
             
-            <Image zIndex="1" mb={[0, 0, 6, 0]} mt={[10, 10, 0]}  mr={[2, 16]} ml={["0", "10"]} h={["200", "250", "250", "480", "600"]} src={AstronautImg} alt="Logo astronauta da Juste Software House" />
+            <Image loading="lazy" zIndex="1" mb={[0, 0, 6, 0]} mt={[10, 10, 0]}  mr={[2, 16]} ml={["0", "10"]} h={["200", "250", "250", "480", "600"]} src={AstronautImg} alt="Logo astronauta da Juste Software House" />
            <Image w={["80vh", "90vh"]} h={["80vh", "90vh"]} position="absolute" top={["50", "10", "20"]} zIndex="-1" right="0px" bgRepeat="no-repeat" src="./images/greenElipse.svg" />
         </Flex >
         
