@@ -19,7 +19,7 @@ export default function Login() {
         <Flex
           bgColor="gray.900"
           w="100%"
-          h="100vh"
+          h="100%"
           justify="center">
 
             <Flex
@@ -145,7 +145,6 @@ export default function Login() {
                         </Button>
                     </VStack>
                 </Flex>
-                
             </Flex>
         </Flex>
     )

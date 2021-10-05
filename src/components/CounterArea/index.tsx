@@ -1,38 +1,51 @@
 import {Flex, Heading, Text, Grid, GridItem} from '@chakra-ui/react'
 import CounterItem from './CounterItem'
+import Reveal from 'react-reveal/Reveal'
 
 export default function CounterArea() {
     return (
+        <Reveal>
         <Flex 
          w="100%"
          maxW="1480px"
          flexDirection="column"
          mx="auto"
-         h="60vh"
+         h={["100%", "100%", "100%", "100%"]}
          alignItems="center"
-         mt={[ "3.5rem", "5rem", "7rem"]}
+         mt={[ "3.5rem", "5rem", "5rem"]}
+         mb="6rem"
         >
-            <Heading as="span" lineHeight={["2.8rem", "3.2rem"]} textAlign="center" >
-                Impulsionando e tirando <Text display="inline" color="green.300">projetos do papel</Text>, <br/>
-                ajudando a <Text display="inline" color="green.300">desenhar, construir e lançar <br/> </Text> 
-                produtos digitais
-            </Heading>
+               
+                <Heading as="span" lineHeight={["2.8rem", "3.2rem"]} px="1.5rem" textAlign="center" >
+                  <Text bgGradient="linear(to-r, green.300, transparent)" pr="2rem" px="1rem" display="inline" color="white"> Fornecendo tecnologias e tirando </Text>  <br/>projetos do papel, 
+                    ajudando a desenhar,<br/>  construir e lançar
+   
+                    produtos digitais
+                </Heading>
+                
+         
 
-            <Flex maxW="1480px" justify="space-between" align="center">
-                <Grid templateColumns={["1fr", "1fr", "1fr, 1fr", "repeat(3, 1fr)"]} w="100%" justify="space-between" maxW={1480} flexWrap="wrap" mx="auto" pb="10" >
-                    <GridItem mr="10">
+            <Flex maxW="1480px" justify="space-between" align="center" mx="auto">
+                <Reveal>
+                <Grid  templateColumns={["1fr", "1fr", "1fr, 1fr", "repeat(3, 1fr)"]} w="100%" H="100%"   justify="space-between" maxW={1480} flexWrap="wrap" mx="auto"  >
+                    
+                    <GridItem mr={[ "0", "10"]}  >
                         <CounterItem facts={10} iconSome="soma" description="Usuários impactados"/>
                     </GridItem>
-                    <GridItem mr="10">
-                        <CounterItem facts={2} iconSome="soma" description="Horas de desenvolvimento"/>
+             
+                    <GridItem mr={[ "0", "10"]}>
+                        <CounterItem facts={2} iconSome="soma" description="Horas desenvolvidas"/>
                     </GridItem>
-                    <GridItem mr="10">
-                        <CounterItem facts={0.927} iconSome="soma" description="Avaliação de clientes"/>
+                    <GridItem mr={[ "0", "10"]}>
+                        <CounterItem facts={9} iconSome="soma" description="Avaliação de clientes"/>
                     </GridItem>
                 </Grid>
+                </Reveal>
             </Flex>
+            
 
         </Flex>
+        </Reveal>
     )
     
 }

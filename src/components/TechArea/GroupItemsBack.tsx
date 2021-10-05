@@ -9,10 +9,10 @@ interface ITechnologies {
 export default function GroupItemsFrontEnd({iconTech, description}: ITechnologies) {
     return (
         <HStack flexWrap="wrap" spacing="10" mt="auto">
-            <TechItems iconTech="reactIcon1" description="Node" />
-            <TechItems iconTech="reactIcon1" description="Typescript" />
-            <TechItems iconTech="reactIcon1" description="Typescript" />
-            <TechItems iconTech="reactIcon1" description="Typescript" />
+            <TechItems iconTech="Node" description="Node js" />
+            <TechItems iconTech="typescript" description="Typescript" />
+            <TechItems iconTech="python" description="Python" />
+            <TechItems iconTech="php" description="PHP" />
         </HStack>
     )
 }

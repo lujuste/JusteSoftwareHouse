@@ -9,10 +9,10 @@ interface ITechnologies {
 export default function GroupItemsMobile({iconTech, description}: ITechnologies) {
     return (
         <HStack flexWrap="wrap" spacing="10" mt="auto">
-            <TechItems iconTech="reactIcon1" description="React-Native" />
-            <TechItems iconTech="reactIcon1" description="React" />
-            <TechItems iconTech="reactIcon1" description="React" />
-            <TechItems iconTech="reactIcon1" description="React" />
+            <TechItems iconTech="docker" description="Docker" />
+            <TechItems iconTech="mongodb" description="MongoDB" />
+            <TechItems iconTech="redis" description="Redis" />
+            <TechItems iconTech="mysql" description="MySQL" />
         </HStack>
     )
 }

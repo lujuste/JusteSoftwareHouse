@@ -9,10 +9,10 @@ interface ITechnologies {
 export default function GroupItemsDatabase({iconTech, description}: ITechnologies) {
     return (
         <HStack flexWrap="wrap" spacing="10" mt="auto">
-            <TechItems iconTech="reactIcon1" description="React-Native" />
-            <TechItems iconTech="reactIcon1" description="React" />
-            <TechItems iconTech="reactIcon1" description="React" />
-            <TechItems iconTech="reactIcon1" description="React" />
+            <TechItems iconTech="wordpress" description="Wordpress" />
+            <TechItems iconTech="magento" description="Magento" />
+            <TechItems iconTech="laravel" description="Laravel" />
+            <TechItems iconTech="shopify" description="Shopify" />
         </HStack>
     )
 }

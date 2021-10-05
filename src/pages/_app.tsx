@@ -13,7 +13,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-import '../styles/global.scss'
+import '../styles/global.scss';
+import './posts/posts.modules.scss'
+import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -21,18 +23,20 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <NextAuthProvider session={pageProps.session}>
-    <ChakraProvider theme={theme}>
-      <NextProgress
-        color="#8257E5"
-        startPosition={0.3}
-        stopDelayMs={200}
-        height={2} />
-      <ColorModeScript initialColorMode="dark" />
-      <NavMenuProvider>
-       { !isLogin ? <Header /> : null }
-        <Component {...pageProps} />
-      </NavMenuProvider>
-    </ChakraProvider>
+      <ChakraProvider theme={theme}>
+        <NextProgress
+          color="#8257E5"
+          startPosition={0.3}
+          stopDelayMs={200}
+          height={2}
+         />
+        <ColorModeScript initialColorMode="dark" />
+        <NavMenuProvider>
+        { !isLogin ? <Header /> : null }
+          <Component {...pageProps} />
+        { !isLogin ? <Footer /> : null }  
+        </NavMenuProvider>
+      </ChakraProvider>
     </NextAuthProvider>
   )
 }

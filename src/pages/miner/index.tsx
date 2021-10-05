@@ -1,4 +1,6 @@
 import type { NextPage } from 'next'
+import Pulsator from 'react-pulsator'
+
 
 const Minner: NextPage = () => {
     return (
