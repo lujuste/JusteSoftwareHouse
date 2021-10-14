@@ -62,7 +62,7 @@ export function CardsProcess() {
                         whileHover={{ scale: 0.98 }}
                     > 
                         <GridItem cursor="pointer">
-                            <CardItem icon="rocket" title="Deliver" description="Fazendo uma geral no projeto em busca de melhorias importantes. Em fim a etapa de entrega para servir uma ótima experiência para os usuários finais."/>
+                            <CardItem icon="Rocket" title="Deliver" description="Fazendo uma geral no projeto em busca de melhorias importantes. Em fim a etapa de entrega para servir uma ótima experiência para os usuários finais."/>
                         </GridItem>
                     </motion.div>
                     
