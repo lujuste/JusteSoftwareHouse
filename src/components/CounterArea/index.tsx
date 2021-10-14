@@ -52,7 +52,7 @@ export default function CounterArea() {
                         <CounterItem facts={2} iconSome="soma" description="Horas desenvolvidas"/>
                     </GridItem>
                     <GridItem mr={[ "0", "4"]}>
-                        <CounterItem facts={9} iconSome="soma" description="Avaliação de clientes"/>
+                        <CounterItem facts={9} iconSome="soma" description="Avaliações de clientes"/>
                     </GridItem>
                 </Grid>
                 </Reveal>

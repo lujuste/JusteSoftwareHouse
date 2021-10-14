@@ -1,5 +1,5 @@
 import type { GetStaticProps} from 'next'
-import {Flex, Box, HStack, VStack, Image, Heading, Text, Button} from '@chakra-ui/react'
+import {Flex, Box, HStack, VStack, Image, Heading, Text, Button, Spinner, Divider} from '@chakra-ui/react'
 import { getPrismicClient } from '../../services/prismic'
 import Prismic from '@prismicio/client'
 import { useState } from 'react'
@@ -7,6 +7,7 @@ import Link from 'next/link'
 import {format} from 'date-fns'
 import {ptBR} from 'date-fns/locale'
 import {TimeIcon} from '@chakra-ui/icons'
+import { useRouter } from "next/router";
 
 interface Post {
     uid: string;
@@ -32,6 +33,35 @@ interface HomeProps {
 
 
 export default function Posts({postsPagination}: HomeProps): JSX.Element {
+
+    const router = useRouter()
+
+    if(router.isFallback) {
+        return (
+            <>
+            <Flex
+                maxW="100%"
+                minH="90vh"
+                w="100%"
+                mx="auto"
+                bgColor="gray.800"
+                justify="center"
+                flexDir="column"
+                align="center"
+            >
+                <Flex justify="center" align="center"> 
+                    <Spinner thickness="4px"
+                            speed="0.65s"
+                            emptyColor="gray.900"
+                            color="purple.300"
+                            size="xl"
+                     />
+                    </Flex>
+                </Flex>
+                
+            </>
+        )
+    }
 
     const formattedPost = postsPagination.results.map(post => {
         return {
@@ -81,25 +111,34 @@ export default function Posts({postsPagination}: HomeProps): JSX.Element {
     }
 
     return (
+        
         <>
         {posts.map(post => (
 
             // eslint-disable-next-line @next/next/link-passhref
               // eslint-disable-next-line @next/next/link-passhref
             <> 
+
+          
+
+            
+
                 <Flex
                   
                     key={post.uid}
                     direction="column"
                     maxW="1080px"
                     mx="auto"
-                    mt="8rem"
+                    mt={["5rem", "8rem"]}
                     px={["0", "3rem"]}
                     h="100%"
                     maxH="300px"
-                    mb={["10rem", "13rem", "-5rem"]}
+                    mb={["0rem", "13rem", "-5rem"]}
 
                 >
+
+<Divider mt="3rem" maxW="980px" mx="auto" w="100%" orientation="horizontal" />
+
                     <Link href={`/posts/${post.uid}`}>
                         <Box
                             key={post.uid}
@@ -184,6 +223,7 @@ export default function Posts({postsPagination}: HomeProps): JSX.Element {
                         </Box>
                     </Link>
                 </Flex>
+           
                 
                 </>
         
@@ -205,7 +245,7 @@ export default function Posts({postsPagination}: HomeProps): JSX.Element {
                         justifyContent="center"
                         alignItems="center"
                         textAlign="center"
-                        mt={["12rem", "15rem", "8rem", "10rem"]}
+                        mt={["10rem", "15rem", "8rem", "10rem"]}
                         mb={["6rem", "3rem"]}
                         >
                             <Text fontSize="18px">Carregar mais ✅</Text>
@@ -224,7 +264,7 @@ export default function Posts({postsPagination}: HomeProps): JSX.Element {
                     justifyContent="center"
                     alignItems="center"
                     textAlign="center"
-                    mt={["12rem", "18rem", "8rem", "10rem"]}
+                    mt={["10rem", "18rem", "8rem", "10rem"]}
                     mb={["6rem", "3rem"]}
                     >
                         <Text boxShadow="2xl" color="white" fontSize="18px">Sem mais posts<span>❌</span></Text>
