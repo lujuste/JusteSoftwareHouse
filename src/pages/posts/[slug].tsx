@@ -302,7 +302,7 @@ const headingWords = content.heading
                     nextPost: nextPost?.results
                 }
             },
-            revalidate: 60 * 60 // 1 hour
+            revalidate: 60 // 1 min
             
         }
     }
