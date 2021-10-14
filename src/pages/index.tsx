@@ -7,10 +7,15 @@ import Specification from '../components/Specification'
 import TechArea from '../components/TechArea'
 import Warranty from '../components/Warranty.tsx'
 import WorkUsForm from '../components/WorkUsForm'
+import Head from 'next/head'
 
 const Home: NextPage = () => {
   return (
     <>
+      <Head>
+        <title>Juste Software House </title>
+        <meta name="description" content="Software House - Soluções em Desenvolvimento web e mobile de ponta a ponta." />
+      </Head>
       <HomeScreen />
       <CardsProcess />
       <TechArea />
