@@ -11,6 +11,7 @@ import {ptBR} from 'date-fns/locale'
 // eslint-disable-next-line @next/next/no-document-import-in-page
 import  Head  from 'next/head';
 import Link from 'next/link'
+import Comments from "../../components/Comments";
 
 
 interface Post {
@@ -217,6 +218,8 @@ const headingWords = content.heading
                                 </Flex>
 
                                 <Divider mt="3rem" maxW="980px" mx="auto" w="100%" orientation="horizontal" />
+
+                                <Comments />
         
             </Flex>
         </>
