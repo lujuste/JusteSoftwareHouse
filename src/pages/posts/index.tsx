@@ -227,7 +227,7 @@ export default function Posts({postsPagination}: HomeProps): JSX.Element {
                     mt={["12rem", "18rem", "8rem", "10rem"]}
                     mb={["6rem", "3rem"]}
                     >
-                        <Text boxShadow="2xl" color="white" fontSize="18px">Sem mais posts <span>❌</span></Text>
+                        <Text boxShadow="2xl" color="white" fontSize="18px">Sem mais posts ! <span>❌</span></Text>
                         
                    </Button>  
                     }
@@ -270,7 +270,9 @@ export const getStaticProps: GetStaticProps = async () => {
             props: {
                 postsPagination,
                 
-            }
+            },
+            
+            revalidate: 60 * 60 // 1 hour
         }
 
 }
