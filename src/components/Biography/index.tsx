@@ -28,8 +28,9 @@ export default function Biography() {
                         <Image opacity="0.8" boxShadow="2xl" w="80vh" h={["100vh", "100vh"]} zIndex="-1" right="1" position="absolute"  src="./images/code.svg" />
                         
                         <Reveal>
-                        <Heading mt="1.15rem" fontSize="42px" fontWeight="900" fontFamily="Roboto" textAlign="center">  E quem vai acompanhar <Text color="white" pr="20px" bgGradient="linear(to-r, green.300 85%, transparent)" as="span" >  <br/>
-                                    seu projeto?</Text></Heading>
+                        <Heading mt="1.15rem" fontSize={["30px", "32px", "34px", "36px", "38px"]} fontWeight="900" fontFamily="Roboto" textAlign="center">  E quem vai acompanhar <Text color="white" pr="20px" bgGradient="linear(to-r, green.300 85%, transparent)" as="span" >  <br/>
+                                    seu projeto?</Text>
+                        </Heading>
                         </Reveal>
                           
 
@@ -57,17 +58,17 @@ export default function Biography() {
 
                                         Obviamente você ainda não me conhece, <strong>então deixe eu me apresentar: <br/></strong>
 
-                                        Sou <strong>engenheiro e programador autodidata</strong> há mais de 5 anos, apaixonado
-                                        por <strong>programação, Marketing e empreendedorismo.<br/></strong> 
+                                        Sou <strong>engenheiro formado e programador autodidata</strong> há mais de 5 anos, apaixonado
+                                        por <strong>programação, marketing e empreendedorismo.<br/></strong> 
 
                                         Atualmente, atuo como <strong>desenvolvedor full-stack e mobile</strong> remotamente e
                                         sou fundador de um app que será lançado em breve! <strong>(Sem spoilers!)</strong>  <br/>
 
-                                        Além de procurar <strong>ajudar toda a comunidade</strong> com o meu conhecimento técnico,
-                                        e <strong>vários artigos publicados.</strong> <br/>
+                                        Além disso, estou sempre procurando <strong>ajudar toda a comunidade</strong> com o meu conhecimento técnico,
+                                        com vídeos e <strong>vários artigos publicados.</strong> <br/>
 
                                         Bom, agora que estamos <strong>devidamente apresentados, </strong>quero aproveitar para pedir
-                                        para você <strong>visitar minhas redes sociais.</strong>  <br/>
+                                        para você <strong>visitar minhas redes sociais no rodapé desta aplicação. 💜</strong>  <br/>
 
                                     </Text>
                                 </Container>

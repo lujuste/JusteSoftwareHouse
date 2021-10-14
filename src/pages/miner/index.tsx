@@ -1,11 +1,12 @@
 import type { NextPage } from 'next'
 import Pulsator from 'react-pulsator'
+import PageNotFound from '../../components/PageNotFound'
 
 
 const Minner: NextPage = () => {
     return (
         <>
-            <h1>Minner</h1>
+            <PageNotFound />
         </>
     )
 }

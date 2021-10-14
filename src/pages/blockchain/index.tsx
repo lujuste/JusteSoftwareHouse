@@ -1,9 +1,10 @@
 import type { NextPage } from 'next'
+import PageNotFound from '../../components/PageNotFound'
 
 const Blockchain: NextPage = () => {
     return (
         <> 
-            <h1>Minner</h1>
+           <PageNotFound />
         </>
     )
 }

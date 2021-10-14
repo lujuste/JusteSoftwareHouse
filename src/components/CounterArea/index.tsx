@@ -1,8 +1,16 @@
-import {Flex, Heading, Text, Grid, GridItem} from '@chakra-ui/react'
+import {Flex, Heading, Text, Grid, GridItem, useBreakpointValue } from '@chakra-ui/react'
 import CounterItem from './CounterItem'
 import Reveal from 'react-reveal/Reveal'
 
 export default function CounterArea() {
+
+    const isWideVersion = useBreakpointValue({
+        base: false,
+        lg: true,
+        xl: true
+    })
+
+
     return (
         <Reveal>
         <Flex 
@@ -13,15 +21,22 @@ export default function CounterArea() {
          h={["100%", "100%", "100%", "100%"]}
          alignItems="center"
          mt={[ "3.5rem", "5rem", "5rem"]}
-         mb="6rem"
+         mb="8.5rem"
         >
                
-                <Heading as="span" lineHeight={["2.8rem", "3.2rem"]} px="1.5rem" textAlign="center" >
-                  <Text bgGradient="linear(to-r, green.300, transparent)" pr="2rem" px="1rem" display="inline" color="white"> Fornecendo tecnologias e tirando </Text>  <br/>projetos do papel, 
-                    ajudando a desenhar,<br/>  construir e lançar
-   
-                    produtos digitais
-                </Heading>
+                {
+                    isWideVersion ? (
+                        <Heading mt="1rem" lineHeight={["2.8rem", "3.2rem"]} px="1.5rem" textAlign="center" >
+                            <Text as="span" bgGradient="linear(to-r, green.300, transparent)" pr="2rem" px="1rem"  color="white"> Fornecendo tecnologias  </Text>e tirando <br/>projetos do papel, 
+                            <Text bgGradient="linear(to-r, green.300, transparent)" pr="2rem" px="1rem"  color="white" as="span">desenvolvendo produtos digitais</Text> 
+                        </Heading>
+                    ) : (
+                        <Heading mt="2.7rem" fontSize={["26px", "36px"]} lineHeight={["2.8rem", "3.2rem"]} px="1.5rem" textAlign="center" >
+                            <Text mt="4rem" as="span" bgGradient="linear(to-r, green.300, transparent)" pr="2rem" px="1rem"  color="white"> Fornecendo tecnologias </Text>e tirando projetos do papel, 
+                            <Text bgGradient="linear(to-r, green.300, transparent)" pr="2rem" px="1rem"  color="white" as="span">desenvolvendo produtos digitais</Text> 
+                        </Heading>
+                    )
+                }
                 
          
 
@@ -29,14 +44,14 @@ export default function CounterArea() {
                 <Reveal>
                 <Grid  templateColumns={["1fr", "1fr", "1fr, 1fr", "repeat(3, 1fr)"]} w="100%" H="100%"   justify="space-between" maxW={1480} flexWrap="wrap" mx="auto"  >
                     
-                    <GridItem mr={[ "0", "10"]}  >
+                    <GridItem mr={[ "0", "4"]}  >
                         <CounterItem facts={10} iconSome="soma" description="Usuários impactados"/>
                     </GridItem>
              
-                    <GridItem mr={[ "0", "10"]}>
+                    <GridItem mr={[ "0", "4"]}>
                         <CounterItem facts={2} iconSome="soma" description="Horas desenvolvidas"/>
                     </GridItem>
-                    <GridItem mr={[ "0", "10"]}>
+                    <GridItem mr={[ "0", "4"]}>
                         <CounterItem facts={9} iconSome="soma" description="Avaliação de clientes"/>
                     </GridItem>
                 </Grid>

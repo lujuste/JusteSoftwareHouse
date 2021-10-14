@@ -12,10 +12,10 @@ export function NavHamburguer() {
                 <Text cursor="pointer">Conteúdos</Text>
             </ActiveLink>
             <ActiveLink href="/miner" passHref>
-                <Text cursor="pointer">Mineração</Text>
+                <Text cursor="pointer">Quem somos</Text>
             </ActiveLink>
             <ActiveLink href="/blockchain" passHref>
-                <Text cursor="pointer">Blockchain</Text>
+                <Text cursor="pointer">Cases</Text>
             </ActiveLink>
             <ActiveLink href="/contact" passHref>
                 <Text cursor="pointer">Contato</Text>

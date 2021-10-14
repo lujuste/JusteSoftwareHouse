@@ -3,6 +3,7 @@ import { Flex, Image, Heading, VStack, useBreakpointValue, Input, Text, Button }
 import styles from './login.module.scss'
 import { getSession, signIn, useSession } from 'next-auth/client'
 import { GetServerSideProps } from 'next'
+import logoIcon from "../../../public/images/logomark.svg"
 
 export default function Login() {
     const isWideVersion = useBreakpointValue({
@@ -19,14 +20,18 @@ export default function Login() {
         <Flex
           bgColor="gray.900"
           w="100%"
-          h="100%"
-          justify="center">
+          align="center"
+          h={["100%"]}
+          justify="center"
+          px="2rem"
+          >
 
             <Flex
               maxW="1260px"
               bgColor="gray.900"
               mx="auto"
               px="2"
+              pb={["0", "0", "0", "10rem"]}
               justify="center"
               flexWrap={["wrap", "wrap", "wrap", "nowrap"]}>
 
@@ -38,7 +43,7 @@ export default function Login() {
 
                         { isWideVersion && (
                         <Image
-                          src="./images/logo.svg"
+                          src={logoIcon}
                           w="200px"
                           h="300"
                           position="relative"
@@ -51,10 +56,9 @@ export default function Login() {
                           mt="2rem"
                           fontSize={["32px", "50px", "56px"]}
                           >Faça seu login
-                          <br/>
-                          para ver
-                          <span className={styles.test}>
-                          conteúdos <br/>exclusivos🚀</span>
+                          para acessar &nbsp;
+                          <Text as="span" className={styles.test}>
+                          conteúdos exclusivos🚀</Text>
                         </Heading>     
                 </Flex>
 
@@ -63,12 +67,12 @@ export default function Login() {
                   borderRadius="10"
                   px="3rem"
                   maxW={["319px", "389px", "489px"]}
-                  h="601px"
+                  h={["601px"]}
                   align="center"
                   justify="center"
                   mb="5rem"
                   mx="auto"
-                  mt={isWideVersion && ("9.5rem")}>
+                  mt={isWideVersion && ("4rem")}>
 
                     <VStack spacing="1.7rem">
                         <Input

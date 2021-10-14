@@ -20,6 +20,7 @@ interface Post {
     }
 }
 
+
 interface PostPagination {
     next_page: string;
     results: Post[]
@@ -59,6 +60,7 @@ export default function Posts({postsPagination}: HomeProps): JSX.Element {
 
       const newPost = postsResults.results.map(post => {
           return {
+            key: post.uid,
             uid: post.uid,
             first_publication_date: format(
                 new Date(post.first_publication_date), 'dd MMM yyyy', {
@@ -83,122 +85,152 @@ export default function Posts({postsPagination}: HomeProps): JSX.Element {
         {posts.map(post => (
 
             // eslint-disable-next-line @next/next/link-passhref
-            
-            
-            <Flex
-                key={post.uid}
-                direction="column"
-                maxW="1480px"
-                mx="auto"
-                mt="1rem"
-                px={["0", "3rem"]}
-                h="100%"
-                maxH="300px"
-                mb={["10rem", "13rem", "1rem"]}
-          
-        >
-        <Link href={`/posts/${post.uid}`} key={post.uid}  >
-            <Box
-                w="100%"
-                h="100%"
-                bg="gray.900"
-                mx="auto"
-                my="1rem"
-              
-                borderRadius="15px"
-                px="2rem"
-                alignItems="left"
-                cursor="pointer"
-                border="1px"
-                borderColor="gray.300"
-                py={["2rem", "0"]}
-                pb="3rem"
-                _hover={{
-                    borderColor: "green.300",
-                }}
-                
-                
-                >
-                   <HStack
+              // eslint-disable-next-line @next/next/link-passhref
+            <> 
+                <Flex
+                  
+                    key={post.uid}
+                    direction="column"
+                    maxW="1080px"
                     mx="auto"
-                    justify={["center" ,"space-around"]}
-                    flexDirection={["column", "row"]}
-                    flexWrap={["wrap", "wrap", "nowrap", "nowrap"]}
-                    my={["0rem","3rem"]}
-                   >
-                        <VStack
-                            alignItems={["justify", "left"]}  
-                            mr={["0", "0", "3rem"]}
-                        >
-                            <Heading
-                               maxW={["500px", "auto"]}    
-                               justifyContent="center"
-                               alignItems="justify" 
-                               fontSize={["14px", "18px", "22px"]}
-                               fontWeight="bold"
-                               mb="1rem"
-                               textAlign={["center", "center", "left"]}
-                            >
-                                {post.data.title}
-                            </Heading>
-                            <Text
-                                pb={["1.5rem", "2rem", "0"]}
-                                w={["280px", "auto"]}
-                                maxW={["500px", "auto"]}
-                                fontSize={["10px", "14px", "16px"]}
-                                textAlign={["center", "center", "left"]}
-                                justifyContent="center"
-                            >
-                                {post.data.subtitle}
-                                <Flex 
-                                    justify={["center", "center", "left"]}
-                                    mt="1rem"
-                                    
-                                >
-                                <TimeIcon mt="3px" mr="0.5rem" />
-                               <Text> {post.first_publication_date} </Text>
-                                </Flex>
-                            </Text>
-                        </VStack>
+                    mt="8rem"
+                    px={["0", "3rem"]}
+                    h="100%"
+                    maxH="300px"
+                    mb={["10rem", "13rem", "-5rem"]}
 
-                        <Image
-                            
-                            display="block"
+                >
+                    <Link href={`/posts/${post.uid}`}>
+                        <Box
+                            key={post.uid}
+                            boxShadow="dark-lg"
+                            w="100%"
+                            h="100%"
+                            opacity="0.9"
+                            bg="gray.900"
+                            mx="auto"
                             borderRadius="15px"
-                            mx="0 auto"
-                            h="auto"
-                            maxH="200px"
-                            w="auto"
-                            alignItems="center"
-                            maxW={["80%", "300px"]}
-                            src={post.data.banner.url}
-                            alt=""
-                        />
-                </HStack> 
-                    
-            </Box>    
-        </Link>     
-        </Flex>
+                            px="2rem"
+                            alignItems="left"
+                            cursor="pointer"
+                            border="1px"
+                            borderColor="gray.300"
+                            py={["2rem", "0"]}
+                            pb="3rem"
+                            transition="ease-out 200ms"
+                            
+                            _hover={{
+                                borderColor: "green.300",
+                            }}
+
+
+                        >
+                            <HStack
+                                mx="auto"
+                                justify={["center", "space-around"]}
+                                flexDirection={["column", "row"]}
+                                flexWrap={["wrap", "wrap", "nowrap", "nowrap"]}
+                                my={["0rem", "3rem"]}
+                            >
+                                <VStack
+                                    alignItems={["justify", "left"]}
+                                    mr={["0", "0", "3rem"]}
+                                >
+                                    <Heading
+                                        maxW={["500px", "auto"]}
+                                        justifyContent="center"
+                                        alignItems="justify"
+                                        fontSize={["14px", "18px", "22px"]}
+                                        fontWeight="bold"
+                                        mb="1rem"
+                                        textAlign={["center", "center", "left"]}
+                                    >
+                                        {post.data.title}
+                                    </Heading>
+                                    <Text
+                                        pb={["1.5rem", "2rem", "0"]}
+                                        w={["280px", "auto"]}
+                                        maxW={["500px", "auto"]}
+                                        fontSize={["10px", "14px", "16px"]}
+                                        textAlign={["center", "center", "left"]}
+                                        justifyContent="center"
+                                    >
+                                        {post.data.subtitle}
+                                        <Flex
+                                            justify={["center", "center", "left"]}
+                                            mt="1rem"
+
+                                        >
+                                            <TimeIcon mt="3px" mr="0.5rem" />
+                                            <Text> {post.first_publication_date} </Text>
+                                        </Flex>
+                                    </Text>
+                                </VStack>
+
+                                <Image
+
+                                    display="block"
+                                    borderRadius="15px"
+                                    mx="0 auto"
+                                    h="auto"
+                                    maxH="200px"
+                                    w="auto"
+                                    alignItems="center"
+                                    maxW={["80%", "300px"]}
+                                    src={post.data.banner.url}
+                                    alt="" />
+                            </HStack>
+
+                        </Box>
+                    </Link>
+                </Flex>
+                
+                </>
         
         
     ))}
 
-                    { nextPage && (
+                    { nextPage ? (
                         <Button type="button" onClick={handleNextPage}
+                        boxShadow="2xl"
                         w="228px"
                         display="flex"
                         h="65px"
                         bgColor="purple.300"
                         mx="auto"
+                        transition="ease-out 200ms"
+                        _hover={{
+                            opacity: "0.8"
+                        }}
                         justifyContent="center"
                         alignItems="center"
                         textAlign="center"
-                        mt={["12rem", "15rem", "5rem", "5rem"]}
-                        mb="3rem"
+                        mt={["12rem", "15rem", "8rem", "10rem"]}
+                        mb={["6rem", "3rem"]}
                         >
-                            <Text fontSize="16px">Carregar mais</Text>
+                            <Text fontSize="18px">Carregar mais ✅</Text>
                        </Button>  
-                    )}
+                    ) : 
+                    <Button type="button" 
+                    w="228px"
+                    display="flex"
+                    h="65px"
+                    bgColor="red.800"
+                    mx="auto"
+                    cursor="not-allowed"
+                    _hover={{
+                        opacity:"0.8"
+                    }}
+                    justifyContent="center"
+                    alignItems="center"
+                    textAlign="center"
+                    mt={["12rem", "18rem", "8rem", "10rem"]}
+                    mb={["6rem", "3rem"]}
+                    >
+                        <Text boxShadow="2xl" color="white" fontSize="18px">Sem mais posts <span>❌</span></Text>
+                        
+                   </Button>  
+                    }
         </>
     )
 }

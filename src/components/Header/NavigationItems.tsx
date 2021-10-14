@@ -15,19 +15,19 @@ export function NavigationItem() {
 
             <BreadcrumbItem >
                 <ActiveLink href="/posts" passHref>
-                    <BreadcrumbLink mt="25px" pb="28px" opacity="0.5" _hover={{ textDecoration: "none", opacity: 1 }} >Conteúdo</BreadcrumbLink>
+                    <BreadcrumbLink mt="25px" pb="28px" opacity="0.5" _hover={{ textDecoration: "none", opacity: 1 }} >Conteúdos</BreadcrumbLink>
                 </ActiveLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem >
                 <ActiveLink href="/miner" passHref>
-                    <BreadcrumbLink opacity="0.5" mt="25px" pb="28px" _hover={{ textDecoration: "none", opacity: 1 }} >Mineração</BreadcrumbLink>
+                    <BreadcrumbLink opacity="0.5" mt="25px" pb="28px" _hover={{ textDecoration: "none", opacity: 1 }} >Quem somos</BreadcrumbLink>
                 </ActiveLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem>
                 <ActiveLink href="/blockchain" passHref>
-                    <BreadcrumbLink opacity="0.5" mt="25px" pb="28px" _hover={{ textDecoration: "none", opacity: 1 }} >Blockchain</BreadcrumbLink>
+                    <BreadcrumbLink opacity="0.5" mt="25px" pb="28px" _hover={{ textDecoration: "none", opacity: 1 }} >Cases</BreadcrumbLink>
                 </ActiveLink>
             </BreadcrumbItem>
 

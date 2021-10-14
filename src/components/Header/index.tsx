@@ -43,6 +43,12 @@ export function Header() {
                     bg="gray.900"
                     borderBottomWidth="1px"
                     borderColor="gray.300"
+                    position="fixed"
+                    top="0"
+                    left="0"
+                    right="0"
+                    display="block"
+                    zIndex="10"
                 >
 
                     <Flex
@@ -57,6 +63,8 @@ export function Header() {
                         borderBottomWidth="1px"
                         borderColor="gray.300"
                         bg="gray.900"
+                        
+                        
                     >
 
 
@@ -88,6 +96,13 @@ export function Header() {
             bg="gray.900"
             borderBottomWidth="1px"
             borderColor="gray.300"
+            position="fixed"
+            top="0"
+            left="0"
+            right="0"
+            display="block"
+            zIndex="10"
+                   
         >
 
             <Flex
@@ -102,6 +117,7 @@ export function Header() {
                 borderBottomWidth="1px"
                 borderColor="gray.300"
                 bg="gray.900"
+                
             >
 
 

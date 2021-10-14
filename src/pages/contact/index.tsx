@@ -1,9 +1,10 @@
 import type { NextPage } from 'next'
+import PageNotFound from '../../components/PageNotFound'
 
 const Contact: NextPage = () => {
     return (
         <>
-            <h1>Contact</h1>
+           <PageNotFound />
         </>
     )
 }

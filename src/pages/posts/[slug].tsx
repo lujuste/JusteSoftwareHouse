@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-title-in-document-head */
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getPrismicClient } from "../../services/prismic";
-import {Image, Heading, Flex, Text, HStack, Box, Icon, } from '@chakra-ui/react'
-import {TimeIcon} from '@chakra-ui/icons'
+import {Image, Heading, Flex, Text, HStack, Center, Icon, Spinner, Divider } from '@chakra-ui/react'
+import {TimeIcon, ViewIcon, ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import { RichText } from 'prismic-dom';
 import Prismic from '@prismicio/client'
 import { useRouter } from "next/router";
@@ -10,55 +10,99 @@ import {format} from 'date-fns'
 import {ptBR} from 'date-fns/locale'
 // eslint-disable-next-line @next/next/no-document-import-in-page
 import  Head  from 'next/head';
+import Link from 'next/link'
+
 
 interface Post {
-    first_publication_date?: string;
+    first_publication_date: string | null;
+    last_publication_date: string | null;
     data: {
-        title: string;
-        banner: {
-            url: string;
-        };
-        content: {
-            heading: string;
-            body: {
-                text: string;
-            }[]
-        }[]
-    }
+      title: string;
+      banner: {
+        url: string;
+      };
+      author: string;
+      content: {
+        heading: string;
+        body: {
+          text?: string;
+        }[];
+      }[];
+    };
 }
 
 interface PostProps {
     post: Post;
+    navigation: {
+        prevPost: {
+            uid: string;
+            data: {
+                title: string;
+            }
+        }[]
+        nextPost: {
+            uid: string;
+            data: {
+                title: string;
+            }
+        }[]
+    }
 }
 
-export default function Post({post}: PostProps): JSX.Element {
-        
-    // const totalWords = post.data.content.reduce((total, contentItem) => {
-    //     total += contentItem.heading.split(' ').length
-    //     const words = contentItem.body.map(item => item.text.split(' ').length)
-    //     words.map(word => (total += word))
-    //     return total
-    //   }, 0)
-      
-    //   console.log(totalWords)
-      
-    // const timeRead = Math.ceil(totalWords / 200)
+export default function Post({post, navigation}: PostProps): JSX.Element {
+
+const humanWordsPerMinute = 200;
+const titleWords = post?.data.title.split(' ').length;
+
+const totalWords = post?.data.content.reduce((acc, content) => {
+const headingWords = content.heading
+      ? content.heading.split(' ').length
+      : 0;
+    const bodyWords = RichText.asText(content.body).split(' ').length;
+    // eslint-disable-next-line no-param-reassign
+    acc += headingWords + bodyWords;
+    return acc;
+  }, 0);
+
+    const timeToRead = Math.ceil((titleWords + totalWords) / humanWordsPerMinute);
 
     const router = useRouter()
 
     if(router.isFallback) {
-        return <h1>Carregando...</h1>
+        return (
+            <>
+            <Flex
+                maxW="100%"
+                minH="90vh"
+                w="100%"
+                mx="auto"
+                bgColor="gray.800"
+                justify="center"
+                flexDir="column"
+                align="center"
+            >
+                <Flex justify="center" align="center"> 
+                    <Spinner thickness="4px"
+                            speed="0.65s"
+                            emptyColor="gray.900"
+                            color="purple.300"
+                            size="xl"
+                     />
+                    </Flex>
+                </Flex>
+                
+            </>
+        )
     }
+   
 
     const formattedPost = format(
         new Date(post.first_publication_date),
         'dd MMM yyyy',
         {
-            locale: ptBR
+            locale: ptBR,
         }
     )
-
-    console.log(post)
 
     return (
        <>
@@ -66,24 +110,29 @@ export default function Post({post}: PostProps): JSX.Element {
             <title> {`${post.data.title} - Justecnologia`} </title>
         </Head>
 
-       <Image
-        mt="2rem"
-        w="100%"
-       
-        mx="auto"
-        h="25rem"
-        objectFit="cover"
-        src={post.data.banner.url}
-        alt="">
-        </Image>
+        <Flex mx="auto"
+         w="100%"
+         maxW="1480px"
+         pb="2rem"
+         my="3rem"
+         flexDir="column"
+         justify="center"
+         >
+            <Image
+                mt="2rem"
+                w="100%"
+                mx="auto"
+                h="25rem"
+                objectFit="cover"
+                src={post.data.banner.url}
+                alt="">
+            </Image>
        <Flex flexDir="column" px="2rem">
-       
-
         <Flex 
-            mx="auto" w="100%" maxW="650px" justifyContent="center" alignItems="center" mt="4rem"    
+            mx="auto" w="100%" maxW="650px"  justifyContent="left" alignItems="left" mt="4rem"    
         >
-            <Heading >
-                {post.data.title}
+            <Heading mt="3rem" mb="1rem" fontSize="42px" textAlign="left" >
+                {`${post.data.title}`}
             </Heading>
         </Flex>
         
@@ -91,27 +140,85 @@ export default function Post({post}: PostProps): JSX.Element {
         <HStack mx="auto" w="100%" maxW="650px" justifyContent="left" alignItems="left" mt="1rem" >
             <Flex flexDir="row" justifyContent="center" alignItems="center" >
                 <TimeIcon />
-                <Text ml="0.5rem">{formattedPost}</Text>
+                <Text fontWeight="light" ml="0.5rem">{`Publicado: ${formattedPost}`}</Text>
+                <Center px="1rem" height="20px">
+                    <Divider  orientation="vertical" />
+                </Center>
+                <Icon as={ViewIcon} /> 
+                <Text fontWeight="light" ml="0.5rem"> {`Tempo de leitura: ${timeToRead}min`} </Text>
             </Flex>
         </HStack>
 
                 {post.data.content.map(content => {
+
                     return (
-                        <Flex mx="auto" w="100%" maxW="650px" justifyContent="center" alignItems="center" mt="3rem" key={content.heading} flexDir="column">
-                        <Heading fontSize="24px">
-                            {content.heading}
-                        </Heading>
-                        <Flex mt="2rem" mb="2rem" color="gray.200" flexDirection="column"
-                         dangerouslySetInnerHTML={{
-                             __html: RichText.asHtml(content.body)
-                             }}
-                         />
-                    
-                </Flex>
+                        <>
+                           
+                                <Flex key={content.heading} mx="auto"
+                                 w="100%"
+                                 maxW="650px" 
+                                 textAlign="justify"
+                                 justifyContent="center"
+                                 alignItems="left"
+                                 mt="3rem"
+                                 flexDir="column"
+                                 
+                                 >
+
+                                <Heading textAlign="left" fontSize="24px">
+                                    {content.heading}
+                                </Heading>
+                                
+                                <Flex mt="2rem" color="gray.200" flexDirection="column"
+                                dangerouslySetInnerHTML={{
+                                    __html: RichText.asHtml(content.body)
+                                    }}
+                                />
+
+                                </Flex>
+
+                                
+                        </>
                     )
                 })}
         </Flex>
-            
+
+
+                    <Divider mt="3rem" maxW="980px" mx="auto" w="100%" orientation="horizontal" />
+                    <Flex  mt="3rem"  justify="center" align="center" maxW="800px" mx="auto" w="100%">
+                                    
+                                <Flex ml="1rem" flexWrap="wrap" justify={["center", "center", "space-between"]} w="100%">
+  
+                                    {navigation?.prevPost.length > 0 && (
+                                        <Flex flexDir="column">
+                                        <Link href={`/posts/${navigation.prevPost[0].uid}`}>
+                                            <Heading cursor="pointer" textAlign={["left"]}  textOverflow="ellipsis" maxW="320px" fontSize="20px" > {(navigation.prevPost[0].uid)} </Heading>
+                                        </Link>
+                                        <Text mt="1rem" color="green.300" textAlign={["center", "center", "left"]} fontWeight="bold" ><Icon mr="1rem" as={ArrowLeftIcon} />Post anterior </Text>
+                                        
+
+                                        </Flex>    
+
+                                    )}
+
+                                    { navigation?.nextPost.length > 0 && (
+                                        <Flex mr="1rem" flexDir="column" justify="space-around" >
+                                            <Link href={`/posts/${(navigation.nextPost[0].uid)}`}>
+                                                <Heading cursor="pointer" mr="auto" mt={["2rem", "3rem", "0rem", "0", "0"]} textAlign={["center", "center", "center", "right"]}  maxW="320px" textOverflow="ellipsis" fontSize="20px" > {(navigation.nextPost[0].uid)} </Heading>
+                                            </Link>
+                                            <Text mt="1rem" color="green.300" fontWeight="bold" textAlign={["center", "center", "right"]} >Próximo post <Icon ml="1rem" as={ArrowRightIcon} /></Text>
+                                            
+                                            
+                                        </Flex>   
+                                    ) }
+
+                                    </Flex>
+
+                                </Flex>
+
+                                <Divider mt="3rem" maxW="980px" mx="auto" w="100%" orientation="horizontal" />
+        
+            </Flex>
         </>
     )}
 
@@ -129,20 +236,43 @@ export default function Post({post}: PostProps): JSX.Element {
           }
         })
       
+     
         return { 
-          paths,
-          fallback: 'blocking'
+        paths: [],
+          fallback: true
         }
       
       };
 
-    export const getStaticProps: GetStaticProps = async (context) => {
+    export const getStaticProps: GetStaticProps = async ({params, preview = false, previewData }) => {
         const prismic = getPrismicClient();
-        const {slug} = context.params;
-        const response = await prismic.getByUID('posts', String(slug), {});
+        const {slug} = params;
+        
+        const response = await prismic.getByUID('posts', String(slug), {
+            ref: previewData?.ref ?? null,
+
+        });
+
+        const prevPost = await prismic.query(
+            [Prismic.Predicates.at('document.type', 'posts')], {
+                pageSize: 1,
+                after: response.id,
+                orderings: '[document.first_publication_date]' 
+            }
+        )
+
+        const nextPost = await prismic.query(
+            [Prismic.Predicates.at('document.type', 'posts')], {
+                pageSize: 1,
+                after: response.id,
+                orderings: '[document.last_publication_date desc]' 
+            }
+        )
+
+        console.log(nextPost)
+        console.log(prevPost)
 
         const post = {
-            
             uid: response.uid,
             first_publication_date: response.first_publication_date,
             data: {
@@ -158,16 +288,19 @@ export default function Post({post}: PostProps): JSX.Element {
                         body: [...content.body]
                     }
                 })
-            }
+            } 
         }
-
-        
 
         return {
             props: {
                 post,
+                navigation: {
+                    prevPost: prevPost?.results,
+                    nextPost: nextPost?.results
+                }
             },
-            redirect: 60 * 30
+            revalidate: 60 * 60 // 1 hour
+            
         }
     }
 

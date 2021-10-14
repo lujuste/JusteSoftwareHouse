@@ -6,7 +6,8 @@ import { NavMenuProvider } from '../contexts/NavMenuContext'
 import { useRouter } from 'next/router'
 import NextProgress from 'nextjs-progressbar'
 import { Provider as NextAuthProvider } from 'next-auth/client'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 'swiper/css';
 import '../components/Slider/styles.scss'
 import 'swiper/css/navigation';
@@ -24,6 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <NextAuthProvider session={pageProps.session}>
       <ChakraProvider theme={theme}>
+        <ToastContainer />
         <NextProgress
           color="#8257E5"
           startPosition={0.3}
@@ -36,6 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         { !isLogin ? <Footer /> : null }  
         </NavMenuProvider>
+        
       </ChakraProvider>
     </NextAuthProvider>
   )

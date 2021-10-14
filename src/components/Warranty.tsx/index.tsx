@@ -46,8 +46,8 @@ export default function Warranty() {
                 <Heading textAlign="justify" fontSize={["40px", "60px"]}>Garantia <br/> <Text color="white" bgGradient="linear(to-r, green.300 85%, transparent)" px="1rem" pr="2rem" display="inline-block" >incondicional</Text> </Heading>
                 <Text mt={[ "3rem"]} maxW={["347px", "400px"]} fontWeight="light" fontSize="24px" w="100%" textAlign="justify">
                         Se depois de iniciarmos juntos essa jornada, 
-                        por qualquer motivo desistir do projeto eu assumo todo o risco por você.
-                        Seu dinheiro de volta, sem fazer perguntas ou tentar te convencer do contrário, risco zero, simples assim!
+                        por qualquer motivo <strong>&nbsp;desistir do projeto</strong> eu assumo todo o risco por você. 
+                        <strong>&nbsp;Seu dinheiro de volta,</strong>  sem fazer perguntas ou tentar te convencer do contrário,<strong>&nbsp;risco zero</strong>, simples assim!
                 </Text>
                 </Reveal>
                 
