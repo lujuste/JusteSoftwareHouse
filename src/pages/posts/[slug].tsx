@@ -247,7 +247,7 @@ const headingWords = content.heading
       
       };
 
-    export const getStaticProps: GetStaticProps = async ({params, preview = false, previewData }) => {
+    export const getStaticProps = async ({params, preview = false, previewData }) => {
         const prismic = getPrismicClient();
         const {slug} = params;
         

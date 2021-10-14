@@ -3,17 +3,13 @@ import Reveal from 'react-reveal/Reveal'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import * as yup from 'yup'
 import { FieldError } from 'react-hook-form'
-import { Input } from '../../components/Form/input'
+import { Input } from '../Form/input'
 import { toast } from 'react-toastify';
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useState } from 'react';
 import { motion } from "framer-motion"
 
-interface InputProps {
-    name: string;
-    email?: string;
-    errors?: FieldError;
-}
+
 
 
 export default function WorkUsForm() {
@@ -38,7 +34,7 @@ export default function WorkUsForm() {
         
       })
 
-      const formState = useForm()
+      
 
       const { register, handleSubmit, formState:{ errors } } = useForm({
         resolver: yupResolver(formSchema)
@@ -55,7 +51,7 @@ export default function WorkUsForm() {
       }
 
 
-      const onSubmit = async (data: InputProps ) => {
+      const onSubmit = async (data) => {
 
          try {
             setLoading(true)
