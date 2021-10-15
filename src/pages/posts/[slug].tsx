@@ -19,6 +19,7 @@ interface Post {
     last_publication_date: string | null;
     data: {
       title: string;
+      subtitle: string;
       banner: {
         url: string;
       };
@@ -108,6 +109,8 @@ const headingWords = content.heading
        <>
         <Head>
             <title> {`${post.data.title} - Justecnologia`} </title>
+            <meta property="og:description" content={`${post.data.subtitle}`} />
+            <meta property="og:image" content={`${post.data.banner.url}`} />
         </Head>
 
         <Flex mx="auto"
