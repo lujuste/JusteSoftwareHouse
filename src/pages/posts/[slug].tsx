@@ -119,8 +119,8 @@ const headingWords = content.heading
         <Flex mx="auto"
          w="100%"
          maxW="1480px"
-         pb="2rem"
-         my="3rem"
+         pb="-2rem"
+         my={["-1rem", "1rem"]}
          flexDir="column"
          justify="center"
          >
@@ -222,7 +222,7 @@ const headingWords = content.heading
 
                                 </Flex>
 
-                                <Divider mt="3rem" maxW="980px" mx="auto" w="100%" orientation="horizontal" />
+                                <Divider mt="3rem" mb={["0", "3rem"]} maxW="980px" mx="auto" w="100%" orientation="horizontal" />
 
                                 <Comments />
         
