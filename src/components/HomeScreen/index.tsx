@@ -111,8 +111,14 @@ export function HomeScreen() {
               
             </Stack>
             
+            <Reveal>
             <Image loading="lazy" zIndex="1" mb={[0, 0, 6, 0]} mt={[12, 10, 20, 20]}  mr={[2, 16]} ml={["0", "10"]} h={["200", "250", "0", "480", "600"]} src={AstronautImg} alt="Logo astronauta da Juste Software House" />
+            </Reveal>
+
+            
            <Image w={["80vh", "90vh"]} h={["80vh", "90vh"]} position="absolute" top={["50", "10", "20"]} zIndex="-1" right="0px" bgRepeat="no-repeat" src="./images/greenElipse.svg" />
+           
+        
         </Flex >
         
         </>

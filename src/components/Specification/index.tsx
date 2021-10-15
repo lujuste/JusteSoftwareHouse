@@ -83,14 +83,15 @@ export default function Specification() {
                                 <Text fontSize="18px" fontWeight="bold" textAlign="center" w="100%"  h="100%">Manutenção e atualizações gratuitas por todo o período do deploy da aplicação</Text>
                             </GridItem>
                                 
-                            <GridItem mt={["3rem", "0"]} alignItems="center" justifyContent="center"  maxW="300px" maxH="350px"  h="100%" w="100%">
+                            <GridItem mt={["3rem", "2"]} alignItems="center" justifyContent="center"  maxW="300px" maxH="350px"  h="100%" w="100%">
                                 <Image src={discordIcon} mx={"auto"} boxSize="150px" alt="" />
-                                <Text fontSize="18px" fontWeight="bold" textAlign="center"   w="100%"  h="100%">Manutenção e atualizações gratuitas por todo o período do deploy da aplicação</Text>
+                                <Text fontSize="18px" fontWeight="bold" textAlign="center"   w="100%"  h="100%">Suporte exclusivo no Discord, Slack, Skype, Whatsapp</Text>
                             </GridItem>
 
-                            <GridItem mt={["3rem", "0"]}  maxW="300px" maxH="350px"  h="100%" w="100%">
+                            <GridItem mt={["5rem", "6"]}  maxW="300px" maxH="350px"  h="100%" w="100%">
                                 <Image mx={"auto"} alt="" src={rocketIcon} boxSize="135px" />
-                                <Text  textAlign="center" fontSize="18px" fontWeight="bold" w="100%"  mt="0.7rem" h="100%" >Manutenção e atualizações gratuitas por todo o período do deploy da aplicação</Text>
+                                <Text  textAlign="center" fontSize="18px" fontWeight="bold" w="100%"  mt="0.7rem" h="100%" >Do zero ao deploy em 
+todas as stacks</Text>
                             </GridItem>
                         </Grid>
                             </Reveal>
