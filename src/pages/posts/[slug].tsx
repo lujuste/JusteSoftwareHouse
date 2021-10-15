@@ -95,7 +95,12 @@ const headingWords = content.heading
             </>
         )
     }
-   
+
+    let dataPrevPost = (navigation.prevPost[0].uid)
+    console.log(dataPrevPost)
+
+
+
 
     const formattedPost = format(
         new Date(post.first_publication_date),
@@ -193,7 +198,7 @@ const headingWords = content.heading
                                     {navigation?.prevPost.length > 0 && (
                                         <Flex flexDir="column">
                                         <Link href={`/posts/${navigation.prevPost[0].uid}`}>
-                                            <Heading cursor="pointer" textAlign={["left"]}  textOverflow="ellipsis" maxW="320px" fontSize="20px" > {(navigation.prevPost[0].uid)} </Heading>
+                                            <Heading cursor="pointer" textAlign={["left"]}  textOverflow="ellipsis" maxW="320px" fontSize="20px" > {(navigation.prevPost[0].data.title)} </Heading>
                                         </Link>
                                         <Text mt="1rem" color="green.300" textAlign={["center", "center", "left"]} fontWeight="bold" ><Icon mr="1rem" as={ArrowLeftIcon} />Post anterior </Text>
                                         
@@ -205,7 +210,7 @@ const headingWords = content.heading
                                     { navigation?.nextPost.length > 0 && (
                                         <Flex mr="1rem" flexDir="column" justify="space-around" >
                                             <Link href={`/posts/${(navigation.nextPost[0].uid)}`}>
-                                                <Heading cursor="pointer" mr="auto" mt={["2rem", "3rem", "0rem", "0", "0"]} textAlign={["center", "center", "center", "right"]}  maxW="320px" textOverflow="ellipsis" fontSize="20px" > {(navigation.nextPost[0].uid)} </Heading>
+                                                <Heading cursor="pointer" mr="auto" mt={["2rem", "3rem", "0rem", "0", "0"]} textAlign={["center", "center", "center", "right"]}  maxW="320px" textOverflow="ellipsis" fontSize="20px" > {(navigation.nextPost[0].data.title)} </Heading>
                                             </Link>
                                             <Text mt="1rem" color="green.300" fontWeight="bold" textAlign={["center", "center", "right"]} >Próximo post <Icon ml="1rem" as={ArrowRightIcon} /></Text>
                                             
