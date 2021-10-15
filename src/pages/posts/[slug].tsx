@@ -96,12 +96,6 @@ const headingWords = content.heading
         )
     }
 
-    let dataPrevPost = (navigation.prevPost[0].uid)
-    console.log(dataPrevPost)
-
-
-
-
     const formattedPost = format(
         new Date(post.first_publication_date),
         'dd MMM yyyy',
@@ -137,7 +131,7 @@ const headingWords = content.heading
         <Flex 
             mx="auto" w="100%" maxW="650px"  justifyContent="left" alignItems="left" mt="4rem"    
         >
-            <Heading mt="3rem" mb="1rem" fontSize="42px" textAlign="left" >
+            <Heading mt={["0", "3rem" ]}mb="1rem" fontSize="42px" textAlign="left" >
                 {`${post.data.title}`}
             </Heading>
         </Flex>
@@ -166,7 +160,7 @@ const headingWords = content.heading
                                  textAlign="justify"
                                  justifyContent="center"
                                  alignItems="left"
-                                 mt="3rem"
+                                 mt={["3rem"]}
                                  flexDir="column"
                                  
                                  >
@@ -196,26 +190,71 @@ const headingWords = content.heading
                                 <Flex ml="1rem" flexWrap="wrap" justify={["center", "center", "space-between"]} w="100%">
   
                                     {navigation?.prevPost.length > 0 && (
-                                        <Flex flexDir="column">
+                                        navigation?.nextPost.length === 0 ? (
+                                            <Flex flexDir="column">
                                         <Link href={`/posts/${navigation.prevPost[0].uid}`}>
-                                            <Heading cursor="pointer" textAlign={["left"]}  textOverflow="ellipsis" maxW="320px" fontSize="20px" > {(navigation.prevPost[0].data.title)} </Heading>
+                                            <Heading opacity="0.7" _hover={{
+                                                opacity: 1,
+                                            }} cursor="pointer" textAlign={["left"]}  textOverflow="ellipsis" maxW="320px" fontSize="20px" > {(navigation.prevPost[0].data.title)} </Heading>
                                         </Link>
-                                        <Text mt="1rem" color="green.300" textAlign={["center", "center", "left"]} fontWeight="bold" ><Icon mr="1rem" as={ArrowLeftIcon} />Post anterior </Text>
-                                        
 
-                                        </Flex>    
+                                        <Link href={`/posts/${navigation.prevPost[0].uid}`} passHref >
+                                         <Text cursor="pointer" opacity="0.8" _hover={{
+                                             opacity: 1,
+                                         }} mt="1rem" color="green.300" textAlign={["center", "center", "left"]} fontWeight="bold" ><Icon mr="1rem" as={ArrowLeftIcon} />Post anterior</Text>
+                                        </Link>
+
+                                        </Flex>  
+                                        ) : (
+                                            <Flex flexDir="column">
+                                        <Link href={`/posts/${navigation.prevPost[0].uid}`}>
+                                            <Heading opacity="0.7" _hover={{
+                                                opacity: 1,
+                                            }} cursor="pointer" textAlign={["left"]}  textOverflow="ellipsis" maxW="320px" fontSize="20px" > {(navigation.prevPost[0].data.title)} </Heading>
+                                        </Link>
+
+                                        <Link href={`/posts/${navigation.prevPost[0].uid}`} passHref >
+                                         <Text cursor="pointer" opacity="0.8" _hover={{
+                                             opacity: 1,
+                                         }} mt="1rem" color="green.300" textAlign={["center", "center", "left"]} fontWeight="bold" ><Icon mr="1rem" as={ArrowLeftIcon} />Post anterior </Text>
+                                        </Link>
+
+                                        </Flex>  
+                                        )
+                                          
 
                                     )}
 
-                                    { navigation?.nextPost.length > 0 && (
-                                        <Flex mr="1rem" flexDir="column" justify="space-around" >
+
+
+                                    { navigation?.nextPost.length > 0 &&  (
+                                        navigation?.prevPost.length === 0 ? (
+
+                                        <Flex flexDir="column"  ml={["-1rem", "auto"]} >
+                                        <Link href={`/posts/${(navigation.nextPost[0].uid)}`}>
+                                            <Heading _hover={{
+                                                opacity: 1,
+                                            }}  cursor="pointer" mr="auto" mt={["2rem", "3rem", "0rem", "0", "0"]} opacity="0.7" textAlign={["center", "center", "center", "right"]}  maxW="320px" textOverflow="ellipsis" fontSize="20px" > {(navigation.nextPost[0].data.title)} </Heading>
+                                        </Link>
+
+                                        <Link href={`/posts/${(navigation.nextPost[0].uid)}`} passHref >
+                                        <Text cursor="pointer" opacity="0.8" _hover={{
+                                            opacity: 1,
+                                        }} mt="1rem" color="green.300" fontWeight="bold" textAlign={["center", "center", "right"]} >Próximo post <Icon ml="1rem" as={ArrowRightIcon} /></Text>
+                                        </Link>
+
+                                    </Flex>   
+                                        ) : (
+                                            <Flex mr="1rem" flexDir="column" justify="space-around" >
                                             <Link href={`/posts/${(navigation.nextPost[0].uid)}`}>
-                                                <Heading cursor="pointer" mr="auto" mt={["2rem", "3rem", "0rem", "0", "0"]} textAlign={["center", "center", "center", "right"]}  maxW="320px" textOverflow="ellipsis" fontSize="20px" > {(navigation.nextPost[0].data.title)} </Heading>
+                                                <Heading _hover={{
+                                                    opacity: 1,
+                                                }} cursor="pointer" mr="auto" mt={["2rem", "3rem", "0rem", "0", "0"]} opacity="0.7" textAlign={["center", "center", "center", "right"]}  maxW="320px" textOverflow="ellipsis" fontSize="20px" > {(navigation.nextPost[0].data.title)} </Heading>
                                             </Link>
                                             <Text mt="1rem" color="green.300" fontWeight="bold" textAlign={["center", "center", "right"]} >Próximo post <Icon ml="1rem" as={ArrowRightIcon} /></Text>
-                                            
-                                            
-                                        </Flex>   
+    
+                                            </Flex>   
+                                        )
                                     ) }
 
                                     </Flex>
