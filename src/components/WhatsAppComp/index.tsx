@@ -9,8 +9,7 @@ export default function WhatsAppComp() {
 			position="left"
 			widgetWidth="300px"
 			widgetWidthMobile="260px"
-			autoOpen={true}
-			autoOpenTimer={5000}
+			autoOpen={false}
 			messageBox={true}
 			messageBoxTxt="Quero tirar uma ideia do papel"
 			iconSize="50"
