@@ -6,7 +6,7 @@ export default function WhatsAppComp() {
     return (
         <WhatsAppWidget
 			phoneNo="5511944466669"
-			position="right"
+			position="left"
 			widgetWidth="300px"
 			widgetWidthMobile="260px"
 			autoOpen={true}
