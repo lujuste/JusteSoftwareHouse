@@ -13,18 +13,23 @@ import '../components/Slider/styles.scss'
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
+import dynamic from 'next/dynamic'
 import '../styles/global.scss';
 import './posts/posts.modules.scss'
 import Footer from '../components/Footer'
 
+
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const isLogin = router.asPath === '/login'
+  const DynamicComponent = dynamic(() => import('../components/WhatsAppComp'), {
+    ssr: false
+  })
 
   return (
     <NextAuthProvider session={pageProps.session}>
       <ChakraProvider theme={theme}>
+      <DynamicComponent />
         <ToastContainer />
         <NextProgress
           color="#8257E5"

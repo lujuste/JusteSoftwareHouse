@@ -112,7 +112,7 @@ export function HomeScreen() {
             </Stack>
             
             <Reveal>
-            <Image loading="lazy" zIndex="1" mb={[0, 0, 6, 0]} mt={[12, 10, 20, 20]}  mr={[2, 16]} ml={["0", "10"]} h={["200", "250", "0", "480", "600"]} src={AstronautImg} alt="Logo astronauta da Juste Software House" />
+            <Image  zIndex="1" mb={[0, 0, 6, 0]} mt={[12, 10, 20, 20]}  mr={[2, 16]} ml={["0", "10"]} h={["200", "250", "0", "480", "600"]} src={AstronautImg} alt="Logo astronauta da Juste Software House" />
             </Reveal>
 
             
