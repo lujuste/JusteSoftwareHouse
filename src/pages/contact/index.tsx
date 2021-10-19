@@ -1,10 +1,11 @@
 import type { NextPage } from 'next'
-import PageNotFound from '../../components/PageNotFound'
+import { TalkProject } from '../../components/talkProject.tsx'
+
 
 const Contact: NextPage = () => {
     return (
         <>
-           <PageNotFound />
+           <TalkProject />
         </>
     )
 }

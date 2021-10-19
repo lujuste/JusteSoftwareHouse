@@ -1,4 +1,5 @@
 import { extendTheme, ThemeConfig, useColorMode } from '@chakra-ui/react';
+import { StepsStyleConfig as Steps } from 'chakra-ui-steps';
 
 const config = {
     initialColorMode: "dark",
@@ -6,7 +7,9 @@ const config = {
 }
 
 export const theme = extendTheme({
-
+    components: {
+        Steps,
+      },
     colors: {
         gray: {
             "900": "#111113",
@@ -20,7 +23,7 @@ export const theme = extendTheme({
         },
 
         purple: {
-            "300": "#8257E5"
+            "300": "#8257E5" 
         }
     },
     fonts: {

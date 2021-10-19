@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import NextProgress from 'nextjs-progressbar'
 import { Provider as NextAuthProvider } from 'next-auth/client'
 import { ToastContainer, toast } from 'react-toastify';
+import {FormProvider} from '../contexts/FormContext'
 import 'react-toastify/dist/ReactToastify.css';
 import 'swiper/css';
 import '../components/Slider/styles.scss'
@@ -27,6 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   })
 
   return (
+    <FormProvider>
     <NextAuthProvider session={pageProps.session}>
       <ChakraProvider theme={theme}>
       <DynamicComponent />
@@ -46,6 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         
       </ChakraProvider>
     </NextAuthProvider>
+    </FormProvider>
   )
 }
 

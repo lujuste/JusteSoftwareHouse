@@ -108,9 +108,9 @@ const headingWords = content.heading
     return (
        <>
         <Head>
-            <title> {`${post.data.title} - Justecnologia`} </title>
-            <meta property="og:description" content={`${post.data.subtitle}`} />
-            <meta property="og:image" content={`${post.data.banner.url}`} />
+            <title> {`${post.data.title} - Juste Tecnologia`} </title>
+            <meta property="og:description" content={post.data.subtitle} />
+            <meta property="og:image" content={post.data.banner.url} />
         </Head>
 
         <Flex mx="auto"
