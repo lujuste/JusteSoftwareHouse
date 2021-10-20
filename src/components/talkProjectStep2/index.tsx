@@ -137,7 +137,7 @@ function tostFailure() {
                 </Container>
                 <Box justifyContent="center" display="flex" alignContent="center" p="2.5" mt="2rem" borderRadius="15px" maxW="400px" w="100%" h="300px" bgColor="gray.800" >
                       <FormControl isRequired >
-                        <Textarea onChange={handleMessage} maxW="400px" p="10" h="220px" type="multiliner" id="message" placeholder="O que está pensando?" />
+                        <Textarea onChange={handleMessage} maxW="400px" p="10" h="200px" type="multiliner" id="message" placeholder="O que está pensando?" />
                       </FormControl>
                 </Box>
                 <Button onClick={handleNextStep}  mt="4rem" w="250px" h="100px" bgColor="green.300" >PROXIMO</Button>  
