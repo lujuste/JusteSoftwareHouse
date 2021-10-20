@@ -7,6 +7,7 @@ import {FormActions, useForm} from '../../contexts/FormContext'
 import ImageJuste from '../../../public/images/warranty.svg'
 import { ChangeEvent } from 'toasted-notes/node_modules/@types/react';
 import { useEffect } from 'react';
+import { CheckIcon, RepeatClockIcon } from '@chakra-ui/icons';
 
 
 export const TalkProjectStep3 = () => {
@@ -77,14 +78,18 @@ export const TalkProjectStep3 = () => {
             <Flex flex="1" flexDir="column" mt="3rem" justifyContent="center" mx={5} w="600px" h="90vh">
 
                 <Flex as="form" p="10" boxShadow="dark-lg" align="center" justify="center" flexDir="column" mt="3rem" mx="auto" w="100%" maxW="560px" h="560px" bg="gray.300" opacity="1" borderRadius="15px" >
-                <Heading>Obrigado!!!</Heading>
-                <Button onClick={handleNextStep}  mt="4rem" w="250px" h="100px" bgColor="green.300" >Voltar à home</Button>  
+                <CheckIcon mb="2rem" boxSize="50" />
+                <Heading color="green.300" >OBRIGADO</Heading>
+                <Text> <RepeatClockIcon mr="5px" /> Retornaremos em até 24h</Text>
+                <Button _hover={{
+                  opacity: "0.8"
+                }} onClick={handleNextStep} color="gray.900" fontWeight="bold" fontSize="18px"  mt="4rem" w="250px" h="100px" bgColor="green.300" >Voltar à home</Button>  
 
                 </Flex>
 
                 <Flex flex="1" flexDir="column" >
                 
-                <Steps mt="2rem" mx="auto" w="300px" activeStep={activeStep}>
+                <Steps colorScheme="green" mt="2rem" mx="auto" w="300px" activeStep={activeStep}>
                 {steps.map(({ label}) => (
                 <Step key={label}>
                 

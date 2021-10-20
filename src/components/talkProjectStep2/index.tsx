@@ -1,6 +1,6 @@
-import {Flex, Heading, Text, Image, Button, Input, Container, Box, FormControl, Textarea} from '@chakra-ui/react'
+import {Flex, Heading, Text, Image, Button, Input, Container, Box, FormControl, Textarea, Spinner} from '@chakra-ui/react'
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/router';
 import {FormActions, useForm} from '../../contexts/FormContext'
@@ -10,6 +10,8 @@ import { useEffect, useState } from 'react';
 
 
 export const TalkProjectStep2 = () => {
+
+  const {state, dispatch}  = useForm()  
 
   const [loading, setLoading] = useState(false)
 
@@ -38,22 +40,28 @@ function tostFailure() {
     })
   }, [])
   
-    const {state, dispatch}  = useForm()  
-  
-    const handleNextStep = async (state) => {
+
+    const handleNextStep = async () => {
      
         try {
           if(state.message !== '') {
+
             setLoading(true)
-            await fetch('/api/getCustomers', {
+             await fetch('/api/getCustomers', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
               },
-              body: state,
+              body: JSON.stringify({
+                name: state.name,
+                email: state.email,
+                phone: state.phone,
+                message: state.message
+              }),     
+            }).then(response => router.push('/contact3') )
+            setLoading(false)
+           
               
-            }).then(response => response.json)
-            router.push('/contact3')
           } else {
             toast.error("Preencha as informações, por favor.", {
               position: toast.POSITION.TOP_RIGHT
@@ -62,7 +70,8 @@ function tostFailure() {
         } catch(err) {
           console.log(err)
         }
- 
+        
+        console.log(state)
       
     }
 
@@ -76,9 +85,6 @@ function tostFailure() {
     }
 
     console.log(state)
-   
-
-    
 
       const content = (
         <Flex py={4}>
@@ -118,6 +124,14 @@ function tostFailure() {
             <Flex flex="1" flexDir="column" mt="3rem" justifyContent="center" mx={5} w="600px" h="90vh">
 
                 <Flex as="form" p="10" boxShadow="dark-lg" align="center" justify="space-around" flexDir="column" mt="3rem" mx="auto" w="100%" maxW="560px" h="560px" bg="gray.300" opacity="1" borderRadius="15px" >
+                {loading ? (<Spinner
+                            thickness="4px"
+                            speed="0.65s"
+                            emptyColor="green.300"
+                            color="#8257E5"
+                            size="xl"
+/>) : (
+                  <>
                 <Container p="2"  maxW="xl" centerContent >
                 <Heading textShadow="dark-lg" maxW="420px" fontWeight="regular" fontSize="22px"> {`Certo ${state.name}, agora conte mais sobre o projeto e as funcionalidades em poucas linhas 🤗`} </Heading>
                 </Container>
@@ -127,7 +141,9 @@ function tostFailure() {
                       </FormControl>
                 </Box>
                 <Button onClick={handleNextStep}  mt="4rem" w="250px" h="100px" bgColor="green.300" >PROXIMO</Button>  
-
+                </>
+)}
+                
                 </Flex>
 
                 <Flex flex="1" flexDir="column" >

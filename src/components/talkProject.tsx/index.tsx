@@ -1,4 +1,4 @@
-import {Flex, Heading, Text, Image, Container, Button, Box, FormControl, Input, FormLabel} from '@chakra-ui/react'
+import {Flex, Heading, Text, Image, Container, Button, Box, FormControl, Input, FormLabel, Spinner} from '@chakra-ui/react'
 import { toast, ToastContainer } from 'react-toastify';
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import Cookies from 'js-cookie'
@@ -6,11 +6,14 @@ import { useRouter } from 'next/router';
 import {FormActions, useForm} from '../../contexts/FormContext'
 import ImageJuste from '../../../public/images/warranty.svg'
 import { ChangeEvent} from 'toasted-notes/node_modules/@types/react';
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
+
 
 export const TalkProject = () => {
     const {state, dispatch}  = useForm()  
     const router = useRouter()
+
+    const [loading, setLoading] = useState(false)
 
     console.log(state)
 
@@ -22,15 +25,14 @@ export const TalkProject = () => {
     }, [])
   
     const handleNextStep = () => {
+      setLoading(true)
       if(state.name !== '' && state.email !== '' && state.phone !== '') {
         router.push('/contact2')
       } else {
         toast.error("Preencha todos os campos, por favor.", {
           position: toast.POSITION.TOP_RIGHT
         });
-
-         }
-      
+      }
     }
 
     const handleFormChangeName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +47,8 @@ export const TalkProject = () => {
     }
 
     const handleFormChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
+
+
       e.preventDefault()
 
       dispatch({
@@ -112,32 +116,39 @@ export const TalkProject = () => {
             <Flex flex="1" flexDir="column" mt="3rem" justifyContent="center" mx={5} w="600px" h="90vh">
 
                 <Flex as="form" boxShadow="dark-lg" align="center" justify="center" flexDir="column" mt="3rem" mx="auto" w="100%" maxW="560px" h="560px" bg="gray.300" opacity="1" borderRadius="15px" >
+            
+                  {loading ? (<Spinner
+                            thickness="4px"
+                            speed="0.65s"
+                            emptyColor="green.300"
+                            color="#8257E5"
+                            size="xl"/>) : (
+                    <>
+                     <Box justifyContent="center" display="flex" alignContent="center" p="2.5" mt="2rem" borderRadius="15px" maxW="400px" w="100%" h="60px" bgColor="gray.800" >
+                     <FormControl isRequired >
+                       <Input type="name" value={state.name} onChange={handleFormChangeName} id="name" placeholder="Insira seu nome" />
+                     </FormControl>
+                   </Box>   
+                   <Box p="2.5" mt="2rem" borderRadius="15px" maxW="400px" w="100%" h="60px" bgColor="gray.800" >
+                   <FormControl>
+                       <Input type="email" id="email" value={state.email} onChange={handleFormChangeEmail} placeholder="Insira seu melhor email" />
+                     </FormControl>
+                   </Box>  
 
-                    
-                    
-                    <Box justifyContent="center" display="flex" alignContent="center" p="2.5" mt="2rem" borderRadius="15px" maxW="400px" w="100%" h="60px" bgColor="gray.800" >
-                      <FormControl isRequired >
-                        <Input type="name" value={state.name} onChange={handleFormChangeName} id="name" placeholder="Insira seu nome" />
-                      </FormControl>
-                    </Box>   
-                    <Box p="2.5" mt="2rem" borderRadius="15px" maxW="400px" w="100%" h="60px" bgColor="gray.800" >
-                    <FormControl>
-                        <Input type="email" id="email" value={state.email} onChange={handleFormChangeEmail} placeholder="Insira seu melhor email" />
-                      </FormControl>
-                    </Box>  
+                   <Box p="2.5" mt="2rem"  borderRadius="15px" maxW="400px" w="100%" h="60px" bgColor="gray.800" >
+                       <FormControl>
+                         <Input placeholder="Insira seu celular" onChange={handleFormChangePhone} value={state.phone} type="number" id="phone" />
+                       </FormControl>
+                   </Box>
 
-                    <Box p="2.5" mt="2rem"  borderRadius="15px" maxW="400px" w="100%" h="60px" bgColor="gray.800" >
-                        <FormControl>
-                          <Input placeholder="Insira seu celular" onChange={handleFormChangePhone} value={state.phone} type="number" id="phone" />
-                        </FormControl>
-                    </Box>
-
-                    <Button onClick={handleNextStep}  mt="4rem" w="250px" h="80px" bgColor="green.300" >PROXIMO</Button> 
+                   <Button onClick={handleNextStep}  mt="4rem" w="250px" h="80px" bgColor="green.300" >PROXIMO</Button> 
+                   </>
+                  )}         
                 </Flex>
 
                 <Flex flex="1" flexDir="column" >
                 
-                <Steps mt="2rem" mx="auto" w="300px" activeStep={activeStep}>
+                <Steps colorScheme="green" borderColor="red" mt="2rem" mx="auto" w="300px" activeStep={activeStep}>
                 {steps.map(({ label}) => (
                 <Step key={label}>
                 

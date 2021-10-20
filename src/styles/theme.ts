@@ -24,7 +24,7 @@ export const theme = extendTheme({
 
         purple: {
             "300": "#8257E5" 
-        }
+        },
     },
     fonts: {
         heading: 'Roboto, sans-serif',
