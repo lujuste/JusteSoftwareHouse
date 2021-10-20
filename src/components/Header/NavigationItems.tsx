@@ -21,7 +21,7 @@ export function NavigationItem() {
 
             <BreadcrumbItem >
                 <ActiveLink href="/miner" passHref>
-                    <BreadcrumbLink opacity="0.5" mt="25px" pb="28px" _hover={{ textDecoration: "none", opacity: 1 }} >Quem somos</BreadcrumbLink>
+                    <BreadcrumbLink opacity="0.5" mt="25px" pb="28px" _hover={{ textDecoration: "none", opacity: 1 }} >Blockchain</BreadcrumbLink>
                 </ActiveLink>
             </BreadcrumbItem>
 

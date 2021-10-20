@@ -69,6 +69,7 @@ const headingWords = content.heading
     const timeToRead = Math.ceil((titleWords + totalWords) / humanWordsPerMinute);
 
     const router = useRouter()
+    
 
     if(router.isFallback) {
         return (

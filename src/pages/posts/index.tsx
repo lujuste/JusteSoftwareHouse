@@ -8,6 +8,7 @@ import {format} from 'date-fns'
 import {ptBR} from 'date-fns/locale'
 import {TimeIcon} from '@chakra-ui/icons'
 import { useRouter } from "next/router";
+import Head from 'next/head'
 
 interface Post {
     uid: string;
@@ -113,6 +114,11 @@ export default function Posts({postsPagination}: HomeProps): JSX.Element {
     return (
         
         <>
+         
+         <Head>
+             <title>Posts - Juste Software House</title>
+         </Head>
+
         {posts.map(post => (
 
             // eslint-disable-next-line @next/next/link-passhref

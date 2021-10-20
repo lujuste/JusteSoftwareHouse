@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Juste Software House </title>
+        <title>Juste Software House - Next Gen </title>
         <meta name="description" content="Software House - Soluções em Desenvolvimento web e mobile de ponta a ponta." />
       </Head>
       <HomeScreen />
