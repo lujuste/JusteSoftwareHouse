@@ -56,7 +56,7 @@ export default function Biography() {
                                     <Text  px="2rem"  py="2rem" >
                                         Prazer, <strong>sou o Lucas!</strong>  <br/>
 
-                                        Obviamente você ainda não me conhece, <strong>então deixe eu me apresentar: <br/></strong>
+                                        Provavelmente você ainda não me conhece, <strong>então deixe eu me apresentar: <br/></strong>
 
                                         Sou <strong>engenheiro formado e programador autodidata</strong> há mais de 5 anos, apaixonado
                                         por <strong>programação, marketing e empreendedorismo.<br/></strong> 
