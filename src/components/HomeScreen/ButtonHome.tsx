@@ -1,4 +1,6 @@
 import { Button, useColorMode } from '@chakra-ui/react'
+import NextLink from 'next/link';
+
 
 export function ButtonHome() {
 
@@ -7,6 +9,7 @@ export function ButtonHome() {
     const secundaryColorMode = colorMode === 'dark' ? 'gray.900' : 'gray.50' 
 
     return (
+        <NextLink href="/contact" >
         <Button
             size="lg"
             bg={baseColorMode}
@@ -17,5 +20,7 @@ export function ButtonHome() {
             }}
         >Embarcar
         </Button>
+        
+        </NextLink>
     )
 }

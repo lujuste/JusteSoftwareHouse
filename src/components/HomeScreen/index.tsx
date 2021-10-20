@@ -116,6 +116,7 @@ export function HomeScreen() {
             </Reveal>
 
             
+            
            <Image w={["80vh", "90vh"]} h={["80vh", "90vh"]} position="absolute" top={["50", "10", "20"]} zIndex="-1" right="0px" bgRepeat="no-repeat" src="./images/greenElipse.svg" />
            
         

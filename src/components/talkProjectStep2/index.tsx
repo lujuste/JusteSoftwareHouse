@@ -1,4 +1,4 @@
-import {Flex, Heading, Text, Image, Button, Input, Container, Box, FormControl, Textarea, Spinner} from '@chakra-ui/react'
+import {Flex, Heading, Text, Image, Button, Input, Container, Box, FormControl, Textarea, Spinner, useBreakpointValue} from '@chakra-ui/react'
 import { Step, Steps, useSteps } from 'chakra-ui-steps';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie'
@@ -39,6 +39,13 @@ function tostFailure() {
       payload: 2
     })
   }, [])
+
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+    xl: true,
+})
+
   
 
     const handleNextStep = async () => {
