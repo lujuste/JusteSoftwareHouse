@@ -5,6 +5,7 @@ import { theme } from '../styles/theme'
 import { NavMenuProvider } from '../contexts/NavMenuContext'
 import { useRouter } from 'next/router'
 import NextProgress from 'nextjs-progressbar'
+import { useBreakpointValue } from '@chakra-ui/react'
 import { Provider as NextAuthProvider } from 'next-auth/client'
 import { ToastContainer, toast } from 'react-toastify';
 import {FormProvider} from '../contexts/FormContext'
@@ -21,17 +22,19 @@ import Footer from '../components/Footer'
 
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+   
+
   const router = useRouter()
   const isLogin = router.asPath === '/login'
-  const DynamicComponent = dynamic(() => import('../components/WhatsAppComp'), {
-    ssr: false
-  })
+    //const DynamicComponent = dynamic(() => import('../components/WhatsAppComp'), {
+    //ssr: false
+  //})
 
   return (
     <FormProvider>
     <NextAuthProvider session={pageProps.session}>
       <ChakraProvider theme={theme}>
-      <DynamicComponent />
         <ToastContainer />
         <NextProgress
           color="#8257E5"
